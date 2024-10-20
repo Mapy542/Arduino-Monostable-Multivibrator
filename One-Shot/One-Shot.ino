@@ -1,8 +1,10 @@
-volatile byte eightTimerPreload = 255 - 65;     // Preload value for the timer
-volatile int sixteenTimerPreload = 65536 - 65;  // Preload value for the timer
+constexpr int highTime = 6;  // Time in microseconds for the output to be high
+
+volatile byte eightTimerPreload = 255 - (16 * (highTime - 2));     // Preload value for the timer
+volatile int sixteenTimerPreload = 65536 - (16 * (highTime - 2));  // Preload value for the timer
 
 void setup() {
-    pinMode(12, OUTPUT);  // outputs
+    pinMode(12, OUTPUT);  // outputs 2 ->11, 3 -> 12
     pinMode(11, OUTPUT);
 
     pinMode(2, INPUT);  // inputs
